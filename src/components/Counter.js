@@ -4,6 +4,16 @@ function Counter() {
   const [count, setCount] = useState(0);
   // Your code below
 
+  useEffect(() => {
+    const dataStorage = localStorage.getItem("count") ?? "";
+    setCount(Number(dataStorage));
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("count", count);
+  }, [count]);
+
+
   function handleDecrement() {
     setCount(count - 1);
   }
